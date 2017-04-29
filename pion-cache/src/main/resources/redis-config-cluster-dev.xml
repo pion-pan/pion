@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<redis-cluster>
+	<!-- 连接超时时间 -->
+	<timeout>5000</timeout>
+	<!-- -->
+	<max_redirections>5</max_redirections>
+	<!-- 连接池最大空闲数 -->
+	<maxIdle>5</maxIdle>
+	<!-- 最大连接数 -->
+	<maxTotal>10</maxTotal>
+
+	<nodes>
+		<node>
+			<clusters>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7000</port>
+				</cluster>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7001</port>
+				</cluster>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7002</port>
+				</cluster>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7003</port>
+				</cluster>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7004</port>
+				</cluster>
+				<cluster>
+					<host>127.0.0.1</host>
+					<port>7005</port>
+				</cluster>
+			</clusters>
+		</node>
+	</nodes>
+</redis-cluster>
