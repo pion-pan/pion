@@ -91,5 +91,6 @@
 		<module>pion-common</module>
 		<module>pion-zk</module>
 		<module>pion-orm</module>
+		<module>pion-codeGen</module>
 	</modules>
 </project>
