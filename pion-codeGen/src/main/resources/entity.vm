@@ -1,6 +1,6 @@
 package ${data.entity.packageName};
 
-import com.pan.book.common.entity.BaseEntity;
+import com.pan.pion.orm.entity.BaseEntity;
 #foreach($imp in $data.entity.imports)
 import $imp;
 #end

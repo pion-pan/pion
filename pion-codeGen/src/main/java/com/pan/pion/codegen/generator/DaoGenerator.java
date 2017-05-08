@@ -47,8 +47,8 @@ public class DaoGenerator extends AbstractGenerator {
 		String filePath = super.getFilePath(table);
 		String packagePath = super.getPackagePath(table);
 		StringBuilder path = new StringBuilder(filePath);
-		path.append("/domain/").append(packagePath)
-			.append("/domain/")
+		path.append("/dao/").append(packagePath)
+			.append("/dao/")
 			.append(context.getDao().getClazzName())
 			.append(".java");
 		return path.toString();

@@ -1,0 +1,40 @@
+Mon May 08 23:17:16 CST 2017  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Mon May 08 23:17:16 CST 2017   [info] ************************************************************** 
+Mon May 08 23:17:16 CST 2017   [info] Starting Jakarta Velocity v1.4
+Mon May 08 23:17:16 CST 2017   [info] RuntimeInstance initializing.
+Mon May 08 23:17:16 CST 2017   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Mon May 08 23:17:16 CST 2017   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Mon May 08 23:17:16 CST 2017   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Mon May 08 23:17:16 CST 2017   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Mon May 08 23:17:16 CST 2017   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [info] ClasspathResourceLoader : initialization starting.
+Mon May 08 23:17:16 CST 2017   [info] ClasspathResourceLoader : initialization complete.
+Mon May 08 23:17:16 CST 2017   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Mon May 08 23:17:16 CST 2017   [info] Default ResourceManager initialization complete.
+Mon May 08 23:17:16 CST 2017   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Mon May 08 23:17:16 CST 2017   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Mon May 08 23:17:16 CST 2017   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Mon May 08 23:17:16 CST 2017   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Mon May 08 23:17:16 CST 2017   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Mon May 08 23:17:16 CST 2017   [info] Created: 20 parsers.
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : initialization starting.
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Mon May 08 23:17:16 CST 2017  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro :  VM library template macro registration complete.
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : messages on  : VM system will output logging messages
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Mon May 08 23:17:16 CST 2017   [info] Velocimacro : initialization complete.
+Mon May 08 23:17:16 CST 2017   [info] Velocity successfully started.
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found entity.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found condition.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found dao.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found mapper.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = mapper.vm [line 44,column 33] : ${field} is not a valid reference.
+Mon May 08 23:17:16 CST 2017   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = mapper.vm [line 69,column 41] : ${f.field} is not a valid reference.
+Mon May 08 23:17:16 CST 2017   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = mapper.vm [line 69,column 52] : ${f.sort} is not a valid reference.
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found mapConfig.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Mon May 08 23:17:16 CST 2017   [info] ResourceManager : found dao.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

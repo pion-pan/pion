@@ -1,6 +1,6 @@
 package ${data.condition.packageName};
 
-import com.pan.book.common.condition.BaseCondition;
+import com.pan.pion.orm.BaseCondition;
 #foreach($imp in $data.entity.imports)
 import $imp;
 #end

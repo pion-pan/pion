@@ -2,7 +2,7 @@
 #set ($entity=$data.entity)
 package ${dao.packageName};
 
-import com.pan.book.common.mapper.BaseMapper;
+import com.pan.pion.orm.mapper.BaseMapper;
 import ${entity.packageName}.${entity.clazzName};
 /**
  * 该类负责数据访问接口，与mybatis的mapper文件对应。

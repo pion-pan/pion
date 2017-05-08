@@ -15,6 +15,10 @@
 		<jedis.version>2.9.0</jedis.version>
 		<commons-beanutils.version>1.9.3</commons-beanutils.version>
 		<curator-framework.version>3.3.0</curator-framework.version>
+		<mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+		<commons-dbcp2.version>2.1.1</commons-dbcp2.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<mybatis.version>3.3.0</mybatis.version>
 	</properties>
 
 	<dependencyManagement>
@@ -49,6 +53,28 @@
 				<artifactId>curator-framework</artifactId>
 				<version>${curator-framework.version}</version>
 			</dependency>
+			<!-- jdbc begin -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-dbcp2</artifactId>
+				<version>${commons-dbcp2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<!-- jdbc end -->
 		</dependencies>
 	</dependencyManagement>
 

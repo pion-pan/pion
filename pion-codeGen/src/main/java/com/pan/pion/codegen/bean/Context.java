@@ -153,7 +153,7 @@ public class Context {
 		StringBuilder clazzName = new StringBuilder();
 		clazzName.append(tableName).append("Dao").toString();
 		dao.setClazzName(clazzName.toString());
-		dao.setPackageName(packageName + ".domain");
+		dao.setPackageName(packageName + ".dao");
 		dao.setBeanName(clazzName.substring(0, 1).toLowerCase()
 					+ (clazzName.substring(1)));
 	}
