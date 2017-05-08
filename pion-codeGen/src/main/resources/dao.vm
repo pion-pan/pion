@@ -1,0 +1,15 @@
+#set ($dao=$data.dao)
+#set ($entity=$data.entity)
+package ${dao.packageName};
+
+import com.pan.book.common.mapper.BaseMapper;
+import ${entity.packageName}.${entity.clazzName};
+/**
+ * 该类负责数据访问接口，与mybatis的mapper文件对应。
+ * @author: ${data.auth} 
+ * @date: ${data.datetime}
+ * @since ${data.version}
+ */
+public interface ${dao.clazzName} extends BaseMapper<${entity.clazzName}> {
+	
+}

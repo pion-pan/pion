@@ -1,0 +1,172 @@
+#set ($dao=$data.dao)
+#set ($mapper=$data.mapper)
+#set ($entity=$data.entity)
+#set ($condition=$data.condition)
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${dao.packageName}.${dao.clazzName}">
+	<resultMap type="${entity.clazzName}" id="baseResultMap">
+		<result property="id" column="id"  jdbcType="BIGINT"/>
+#foreach($field in $mapper.fields)
+		<result property="${field.property}" column="${field.col}"  jdbcType="${field.jdbcType}"/>
+#end
+	</resultMap>
+	
+	<sql id="selectSql">
+		SELECT
+			id AS id,
+			<trim prefix="" suffixOverrides=",">
+#foreach($field in $mapper.fields)
+			${field.col} AS ${field.property},
+#end
+			</trim>
+		FROM ${mapper.tableName}
+	</sql>
+	
+	<sql id="whereSql">
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="id != null">
+				AND id = #{id}
+			</if>
+#foreach($field in $mapper.fields)
+			<if test="${field.property} != null">
+				AND ${field.col} = #{${field.property}}
+			</if>
+#end
+		</trim>
+	</sql>
+	
+	<sql id="selectSqlDynamic">
+		SELECT
+			<trim prefix="" suffixOverrides=",">
+			<foreach collection="selectField" index="index" item="field" 
+    			separator=",">
+   				${field}
+  			</foreach>
+  			</trim>
+		FROM ${mapper.tableName}
+	</sql>
+
+	<sql id="whereSqlDynamic">
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="condition.id != null">
+				AND id = #{condition.id}
+			</if>
+#foreach($field in $mapper.fields)
+			<if test="condition.${field.property} != null">
+				AND ${field.col} = #{condition.${field.property}}
+			</if>
+#end
+		</trim>
+	</sql>
+	
+	<sql id="sortSql">
+		<if test="sortCount != null">
+		order by 
+			<trim prefix="" suffixOverrides=",">
+				<foreach collection="sorts" index="index" item="f" 
+	    			separator=",">
+	   				${f.field} ${f.sort} 
+	  			</foreach>
+  			</trim>
+		</if>
+	</sql>
+	
+	<sql id="updateSql">
+		UPDATE ${mapper.tableName}
+		<trim prefix="SET" suffixOverrides=",">
+#foreach($field in $mapper.fields)
+			<if test="${field.property} != null">
+				${field.col} = #{${field.property}},
+			</if>
+#end
+		</trim>
+	</sql>
+
+	<sql id="deleteSql">
+		DELETE from ${mapper.tableName}
+	</sql>
+
+	<sql id="insertColume">
+		<trim prefix="" suffixOverrides=",">
+			id,
+#foreach($field in $mapper.fields)
+			<if test="${field.property} != null">
+				${field.col},
+			</if>
+#end
+		</trim>
+	</sql>
+
+	<sql id="insertValue">
+		<trim prefix="" suffixOverrides=",">
+		    #{id},
+#foreach($field in $mapper.fields)
+			<if test="${field.property} != null">
+				#{${field.property}},
+			</if>
+#end
+		</trim>
+	</sql>
+	<sql id="batchInsertColume">
+		<trim prefix="" suffixOverrides=",">
+			    id,
+#foreach($field in $mapper.fields)
+				${field.col},
+#end
+		</trim>
+	</sql>
+	<sql id="batchInsertValue">
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+		<trim prefix="" suffixOverrides=",">
+		#{item.id},
+#foreach($field in $mapper.fields)
+				#{item.${field.property}},
+#end		
+		</trim>
+		)
+		</foreach>
+	</sql>
+	
+	<insert id="insert" parameterType="${entity.clazzName}" >
+		INSERT INTO ${mapper.tableName}(
+			<include refid="insertColume"/>
+		) VALUE (
+			<include refid="insertValue"/>
+		)
+	</insert>
+	
+	<insert id="insertBatch" >
+		INSERT INTO ${mapper.tableName}(
+			<include refid="batchInsertColume"/>
+		)VALUES
+		<include refid="batchInsertValue"/>
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+		<include refid="deleteSql"/>
+		WHERE id = #{id}
+	</delete>
+	
+	<update id="updateById" parameterType="${entity.clazzName}">
+		<include refid="updateSql"/>
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectById" parameterType="Long" resultType="${entity.clazzName}">
+		<include refid="selectSql"/>
+		where id=#{id}
+	</select>
+	
+	<select id="selectList" parameterType="${condition.clazzName}" resultType="${entity.clazzName}">
+		<include refid="selectSql"/>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectCount" parameterType="${condition.clazzName}" resultType="Integer">
+		SELECT COUNT(ID) AS count FROM ${mapper.tableName}
+		<include refid="whereSql"/>
+	</select>
+	
+</mapper>

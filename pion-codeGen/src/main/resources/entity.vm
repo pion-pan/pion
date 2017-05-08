@@ -1,0 +1,44 @@
+package ${data.entity.packageName};
+
+import com.pan.book.common.entity.BaseEntity;
+#foreach($imp in $data.entity.imports)
+import $imp;
+#end
+
+/**
+ * 该类是映射到表的实体类，负责与表进行一一对应。
+ * @author: ${data.auth} 
+ * @date: ${data.datetime}
+ * @since ${data.version}
+ */
+public class ${data.entity.clazzName} extends BaseEntity {
+private static final long serialVersionUID = 1L;
+	public static final String COL_ID ="id";
+#foreach($field in $data.mapper.fields)
+	public static final String COL_${field.upperCol} ="${field.col}";
+#end
+#foreach($field in $data.entity.fields)
+
+	/**
+	 * ${field.comment}
+	 */
+	private ${field.type} ${field.name};
+#end
+
+#foreach($field in $data.entity.fields)
+
+	/**
+	 * ${field.comment}
+	 */
+	public void ${field.setMethodName}(${field.type} ${field.name}){
+		this.${field.name} = ${field.name};
+	}
+	
+	/**
+	 * ${field.comment}
+	 */
+	public ${field.type} ${field.getMethodName}(){
+		return  ${field.name};
+	}
+#end
+}

@@ -1,0 +1,39 @@
+package ${data.condition.packageName};
+
+import com.pan.book.common.condition.BaseCondition;
+#foreach($imp in $data.entity.imports)
+import $imp;
+#end
+import java.util.Date;
+
+/**
+ * 该类是表的条件类，用于覆盖查询参数，现在默认为和entity一致。
+ * @author: ${data.auth} 
+ * @date: ${data.datetime}
+ * @since ${data.version}
+ */
+public class ${data.condition.clazzName} extends BaseCondition {
+#foreach($field in $data.entity.fields)
+
+	/**
+	 * ${field.comment}
+	 */
+	private ${field.type} ${field.name};
+#end
+#foreach($field in $data.entity.fields)
+
+	/**
+	 * ${field.comment}
+	 */
+	public void ${field.setMethodName}(${field.type} ${field.name}){
+		this.${field.name} = ${field.name};
+	}
+	
+	/**
+	 * ${field.comment}
+	 */
+	public ${field.type} ${field.getMethodName}(){
+		return  ${field.name};
+	}
+#end
+}

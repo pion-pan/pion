@@ -1,0 +1,173 @@
+#set ($daoImpl=$data.daoImpl)
+#set ($entity=$data.entity)
+package ${daoImpl.packageName};
+
+import java.util.List;
+import com.ziroom.zrframe.orm.dao.support.DaoSupport;
+import ${entity.packageName}.${entity.clazzName};
+import ${data.dao.packageName}.${data.dao.clazzName};
+
+/**
+ * TODO
+ * @author: ${data.auth} 
+ * @date: ${data.datetime}
+ * @since ${data.version}
+ */
+public class ${daoImpl.clazzName} implements ${data.dao.clazzName} {
+	private DaoSupport daoSupport;
+
+	public DaoSupport getDaoSupport() {
+		return daoSupport;
+	}
+
+	public void setDaoSupport(DaoSupport daoSupport) {
+		this.daoSupport = daoSupport;
+	}
+	
+	/**
+	 * 单个保存实体信息。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param value
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public Integer add${entity.clazzName}(${entity.clazzName} value){
+		if (value == null) {
+			throw new RuntimeException("参数不能为空");
+		}
+		return daoSupport.save(
+				"${entity.packageName}.${entity.clazzName}.insert",
+				value);
+	}
+	
+	/**
+	 * 批量保存实体列表信息。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param value
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public void addBatch${entity.clazzName}(List<${entity.clazzName}> values){
+		if (values == null || values.isEmpty()) {
+			throw new RuntimeException("参数不能为空");
+		}
+		daoSupport.batchSave(
+				"${entity.packageName}.${entity.clazzName}.insertBatch",
+				values);
+	}
+	
+	/**
+	 * 根据id修改对象信息。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param value
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public Integer modify${entity.clazzName}ById(${entity.clazzName} value){
+		if (value == null || value.getId() == null) {
+			throw new RuntimeException("参数中id不能为空");
+		}
+		return daoSupport.update(
+				"${entity.packageName}.${entity.clazzName}.updateById",
+				value);
+	}
+	
+	/**
+	 * 根据参数查询实体列表。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param value
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public List<${entity.clazzName}> query${entity.clazzName}s(${entity.clazzName} value){
+		if (value == null) {
+			throw new RuntimeException("参数不能为空");
+		}
+		return (List<${entity.clazzName}>) daoSupport.findForList(
+				"${entity.packageName}.${entity.clazzName}.selectAll",
+				value);
+	}
+	
+	/**
+	 * 根据id查询单个实体信息。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param id
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public ${entity.clazzName} query${entity.clazzName}ById(Long id){
+		if (id == null || id <= 0) {
+			throw new RuntimeException("参数id不能为空并且不能为非正数");
+		}
+		return (${entity.clazzName})daoSupport.findForObject(
+				"${entity.packageName}.${entity.clazzName}.selectById",
+				id);
+	}
+	
+	/**
+	 * 根据id删除实体信息。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param id
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public Integer delete${entity.clazzName}ById(Long id){
+		if (id == null || id <= 0) {
+			throw new RuntimeException("参数id不能为空并且不能为非正数");
+		}
+		return daoSupport.delete(
+				"${entity.packageName}.${entity.clazzName}.deleteById",
+				id);
+	}
+	
+	/**
+	 * 查询实体数量。
+	 * <p><b>注意：</b><br>
+	 * </p>
+	 * <p>
+	 * <b>变更记录：</b><br>
+	 * </p>
+	 * @param value
+	 * @author: ${data.auth} 
+	 * @date: ${data.datetime}
+	 * @since ${data.version}
+	 */
+	public Integer query${entity.clazzName}Count(${entity.clazzName} value){
+		if (value == null) {
+			throw new RuntimeException("参数不能为空");
+		}
+		return daoSupport.findForCount(
+				"${entity.packageName}.${entity.clazzName}.selectCount",
+				value);
+	}
+}
